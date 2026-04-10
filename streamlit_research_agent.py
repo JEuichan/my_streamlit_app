@@ -5,7 +5,50 @@
 
 from __future__ import annotations
 
+import subprocess
+import sys
+
+
+def _ensure_runtime_deps() -> None:
+    """Streamlit Cloud에서 requirements.txt가 누락될 때 한 번 pip로 보완."""
+    try:
+        import langchain_core  # noqa: F401
+    except ImportError:
+        pkgs = (
+            "langchain-core>=0.3.29",
+            "langgraph>=0.2.28",
+            "langchain-openai>=0.3.0",
+            "httpx>=0.27.0",
+            "python-dotenv>=1.0.0",
+            "pydantic>=2,<3",
+        )
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "-q", *pkgs],
+        )
+
+
+_ensure_runtime_deps()
+
+import os
+
 import streamlit as st
+
+
+def _secrets_to_env() -> None:
+    try:
+        sec = st.secrets
+    except Exception:
+        return
+    for key in ("OPENAI_API_KEY", "SERPER_API_KEY"):
+        try:
+            if key in sec:
+                os.environ.setdefault(key, str(sec[key]))
+        except Exception:
+            continue
+
+
+_secrets_to_env()
+
 from langchain_core.messages import HumanMessage
 
 from research_workflow import build_research_graph, new_thread_config

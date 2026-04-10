@@ -1,7 +1,7 @@
 Streamlit Community Cloud
 - Main file: streamlit_research_agent.py (레포 루트)
-- Branch: main2 (또는 기본 브랜치)
+- Branch: main2
 - Secrets: OPENAI_API_KEY, SERPER_API_KEY
-- 의존성: 루트 requirements.txt (엔트리와 같은 폴더라 자동 인식)
+- 의존성: 루트 requirements.txt. 빌드에서 누락되면 앱이 시작 시 pip로 langchain-core 등을 한 번 설치합니다.
 
 로컬: pip install -r requirements.txt && streamlit run streamlit_research_agent.py
