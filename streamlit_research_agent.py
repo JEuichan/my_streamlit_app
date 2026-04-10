@@ -1,6 +1,6 @@
 """
-리서치 ReAct + Serper + 분기/재시도/사용자 게이트 — `research_react_app/.ouroboros/seed.yaml` 스펙.
-실행(저장소 루트에서): `streamlit run research_react_app/streamlit_research_agent.py`
+리서치 ReAct + Serper + 분기/재시도/사용자 게이트.
+실행: streamlit run streamlit_research_agent.py
 """
 
 from __future__ import annotations

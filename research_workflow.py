@@ -18,13 +18,13 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel, Field
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
-if str(_REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(_REPO_ROOT))
+_APP_DIR = Path(__file__).resolve().parent
+if str(_APP_DIR) not in sys.path:
+    sys.path.insert(0, str(_APP_DIR))
 
-from daily_assistant_core import build_llm
+from llm_core import build_llm
 
-load_dotenv(_REPO_ROOT / ".env")
+load_dotenv(_APP_DIR / ".env")
 load_dotenv()
 
 CONFIDENCE_OK = 0.65
