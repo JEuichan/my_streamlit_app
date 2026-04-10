@@ -1,8 +1,9 @@
+# streamlit-bootstrap-v4 — Cloud 로그에 이 주석이 보이면 최신 배포입니다.
 """
 리서치 ReAct + Serper + 분기/재시도/사용자 게이트.
 실행: streamlit run streamlit_research_agent.py
 
-주의: langchain 관련 import는 모두 지연(lazy) — Streamlit Cloud가 requirements를 건너뛸 때 대비.
+langchain import는 지연(lazy). Python 3.14에서는 휠 문제가 있을 수 있어 runtime.txt(3.11) 사용.
 """
 
 from __future__ import annotations
